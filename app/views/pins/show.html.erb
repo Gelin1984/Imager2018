@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+<div class="panel-heading"><center><h2 style="color:indianred";>Your Pin</h2></center></div>
+<div class="panel-body">
+<p id="notice"><%= notice %></p>
+
+	<div class="form-control">
+  <strong>Description:</strong>
+</div>
+<br>
+<div class="form-control">
+ <%= @pin.description %>
+</div>
+<div class="panel-footer">
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>
