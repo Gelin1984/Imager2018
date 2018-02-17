@@ -14,13 +14,19 @@
   
   <div id="header">
   <p class="navbar-text pull-right">
+
+    <% if user_signed_in? %>
+     <%= link_to 'Home', root_path, class: 'btn btn-default' %>
+  <%= link_to 'About', home_about_path, class: 'btn btn-default' %>
+  <%= link_to 'Faq', home_faq_path, class: 'btn btn-default' %>
+    <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-default' %>
+    
+    <% else %>
   <%= link_to 'Home', root_path, class: 'btn btn-default' %>
   <%= link_to 'About', home_about_path, class: 'btn btn-default' %>
   <%= link_to 'Faq', home_faq_path, class: 'btn btn-default' %>
-  <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-default' %> 
- |
+  <% end %>
   
-
 
 </p>
 <ul class="nav">
@@ -31,13 +37,15 @@
 </div>
 
 <div id="navbar">
+  <%= link_to 'List of Pins',pins_path, class: 'btn btn-default'  %>
+
   <% if user_signed_in? %>
-  <%= link_to 'List of Pins',pins_path, :class => 'navbar-link'  %>
-  <%= link_to 'New Pins', new_pin_path, :class => 'navbar-link' %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+   <%= link_to 'New Pins', new_pin_path, class: 'btn btn-default' %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-default'  %>
+
+   <% else %>
+  <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-default'  %> |
+  <%= link_to "Login", new_user_session_path, class: 'btn btn-default'  %>
 <% end %>
  
   
