@@ -67,13 +67,14 @@ usunięty pomyślnie.' }
  end
 
  def pin_params
- params.require(:pin).permit(:description)
+ params.require(:pin).permit(:description, :image)
  end
  def correct_user
+ if @pin.nil?
  @pin = current_user.pins.find_by(id: params[:id])
  redirect_to pins_path, notice: "Nie jesteś
 uprawniony do edycji tego pinu"
-if @pin.nil?
+
  end
 end
 end

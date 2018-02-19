@@ -1,11 +1,6 @@
-<div class="panel panel-default">
-<div class="panel-heading"><h2 style="color:indianred;text-align:center;">Pins
-</h2></div>
-<div class="panel-body">
-
-
 <p id="notice"><%= notice %></p>
 
+<h1> Lista pinow </h1>
 
 <table>
   <thead>
@@ -17,8 +12,8 @@
   <tbody>
     <% @pins.each do |pin| %>
       <tr>
-
-        <td class="form-control"><%= pin.description %></td>
+    <td><%= image_tag pin.image.url(:medium) %></td>
+       <td><%= pin.description %></td>
         <td><%= link_to 'Show', pin %></td>
         <% if pin.user == current_user %>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
