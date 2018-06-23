@@ -8,7 +8,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,
+initial-scale=1, maximum-scale=1">
+
   <%= csrf_meta_tags %>
   </head>
   
@@ -18,8 +20,8 @@
     <% if user_signed_in? %>
      <%= link_to 'Home', root_path, class: 'btn btn-default' %>
   <%= link_to 'About', home_about_path, class: 'btn btn-default' %>
-  <%= link_to 'Faq', home_faq_path, class: 'btn btn-default' %>
     <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-default' %>
+    
     
     <% else %>
   <%= link_to 'Home', root_path, class: 'btn btn-default' %>
@@ -47,16 +49,13 @@
   <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-default'  %> |
   <%= link_to "Login", new_user_session_path, class: 'btn btn-default'  %>
 <% end %>
- 
-  
+
 </div>
 
   <body>
-    <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
+    
+  <% flash.each do |name,msg| %>
+      <%= content_tag(:div,msg,class:"alert alert-info") %>
 <% end %>
     <%= yield %>
   </body>

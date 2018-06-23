@@ -1,19 +1,11 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h2 style="color:indianred;text-align:center;">New Pin</h2></div>
+<div class="panel-body">
 
-<div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    
-    <div class="panel panel-default">
-      <div class="panel-heading text-center">
-        <%= image_tag @pin.image.url(:medium) %>  
-      </div>
-      
-      <div class="panel-body">
-        <%= @pin.description %><br/>        
-        <% if @pin.user == current_user %>
-          <%= link_to 'Edit', edit_pin_path(@pin) %> |
-        <% end %>
-        <%= link_to 'Back', pins_path %>
-      </div>
-    </div>
-  </div>
+<%= render 'form', pin: @pin %>
+<br>
+<div class="panel-footer">
+<%= link_to 'Back', pins_path %>
+</div>
+</div>
 </div>

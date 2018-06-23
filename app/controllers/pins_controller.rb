@@ -7,7 +7,8 @@
 :destroy]
 
  def index
- @pins = Pin.all
+ @pins = Pin.all.order("created_at
+DESC").paginate(:page => params[:page], :per_page => 3)
  end
 
 def show
@@ -26,7 +27,7 @@ def edit
  respond_to do |format|
  if @pin.save
  format.html { redirect_to @pin, notice: 'Pin
-utworzony pomyślnie.' }
+successfully created' }
  format.json { render :show, status: :created,
 location: @pin }
  else
@@ -41,7 +42,7 @@ location: @pin }
  respond_to do |format|
  if @pin.update(pin_params)
  format.html { redirect_to @pin, notice: 'Pin
-zmieniony pomyślnie.' }
+successsfully updated' }
  format.json { render :show, status: :ok,
 location: @pin }
  else
@@ -56,7 +57,7 @@ location: @pin }
  @pin.destroy
  respond_to do |format|
  format.html { redirect_to pins_url, notice: 'Pin
-usunięty pomyślnie.' }
+successfully destroyed' }
  format.json { head :no_content }
  end
  end
@@ -72,8 +73,7 @@ usunięty pomyślnie.' }
  def correct_user
  if @pin.nil?
  @pin = current_user.pins.find_by(id: params[:id])
- redirect_to pins_path, notice: "Nie jesteś
-uprawniony do edycji tego pinu"
+ redirect_to pins_path, notice: "You are not authorized"
 
  end
 end
